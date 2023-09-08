@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Hello World</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is an example Flask app that renders an HTML page.</p>
+    <button onclick="fetchHelloJson()">Fetch Hello JSON</button>
+    <p id="jsonResponse"></p>
+
+    <script>
+        function fetchHelloJson() {
+            fetch('/hello_json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('jsonResponse').innerText = data.message;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>
