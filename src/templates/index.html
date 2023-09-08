@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Flask Hello World</title>
+    <title>Flask MongoDB Integration</title>
 </head>
 <body>
     <h1>Hello, World!</h1>
-    <p>This is an example Flask app that renders an HTML page.</p>
+    <p>This is an example Flask app that interacts with MongoDB.</p>
     <button onclick="fetchHelloJson()">Fetch Hello JSON</button>
+    <button onclick="fetchDatabases()">Fetch Databases</button>
     <p id="jsonResponse"></p>
+    <p id="dbResponse"></p>
 
     <script>
         function fetchHelloJson() {
@@ -15,6 +17,17 @@
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('jsonResponse').innerText = data.message;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function fetchDatabases() {
+            fetch('/fetch_dbs')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('dbResponse').innerText = "Databases: " + data.databases.join(', ');
                 })
                 .catch(error => {
                     console.error('Error:', error);
