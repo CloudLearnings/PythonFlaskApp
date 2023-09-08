@@ -4,7 +4,7 @@ import pymongo
 app = Flask(__name__)
 
 # Create a MongoDB client
-mongo_client = pymongo.MongoClient("mongodb://172.17.0.2:27017")  # Replace <mongo_ip> with the actual IP address
+mongo_client = pymongo.MongoClient("mongodb://172.17.0.2:27017")  # Replace <mongo_ip> with  actual IP address
 
 # Define a function to fetch database names
 def get_database_names():
