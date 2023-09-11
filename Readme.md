@@ -1,5 +1,3 @@
-# My Project README
-
 ## Introduction
 
 This is a brief introduction to my project.
