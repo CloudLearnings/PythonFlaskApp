@@ -16,9 +16,8 @@ Instructions on how to install and set up my project can be found here.
 
 ---
 
-## Usage
-
-Learn how to use my project effectively by following these guidelines.
+## Pipelines
+Github Action : github-action/pipeline branch contains code that dockerize the image and deploy it into local machine
 
 ---
 

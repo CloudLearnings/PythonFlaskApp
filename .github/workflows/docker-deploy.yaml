@@ -1,0 +1,39 @@
+name: Docker Build and Deploy
+
+on:
+  push:
+    branches:
+      - github-action/pipeline
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to Docker Hub
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker Image
+      run: docker build -t cloudlearningdocker/python-flask-app:latest .
+
+    - name: Push Docker Image
+      run: docker push cloudlearningdocker/python-flask-app:latest
+
+  # deploy:
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - name: Checkout Code
+  #     uses: actions/checkout@v2
+
+  #   - name: Pull Docker Image Locally
+  #     run: docker pull cloudlearningdocker/python-flask-app:latest
+
+  #   - name: Run Docker Container Locally
+  #     run: docker run -d -p 5000:5000 your-dockerhub-username/your-image-name:latest
