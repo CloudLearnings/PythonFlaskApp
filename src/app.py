@@ -1,10 +1,15 @@
 from flask import Flask, render_template, jsonify
 import pymongo
+import os
 
 app = Flask(__name__)
 
-# Create a MongoDB client
-mongo_client = pymongo.MongoClient("mongodb://172.17.0.2:27017")  # Replace <mongo_ip> with  actual IP address
+# Retrieve the MongoDB IP address from an environment variable
+mongo_ip = os.environ.get("MONGODB_IP")
+
+# Create a MongoDB client with the retrieved IP address
+mongo_uri = f"mongodb://{mongo_ip}:27017"
+mongo_client = pymongo.MongoClient(mongo_uri)
 
 # Define a function to fetch database names
 def get_database_names():
@@ -25,4 +30,4 @@ def fetch_dbs():
     return jsonify({"databases": db_names})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000,debug=True)
