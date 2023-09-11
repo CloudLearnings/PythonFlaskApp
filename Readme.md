@@ -29,5 +29,9 @@ app.run(host='0.0.0.0', port=5000)
 
 
 ## TO DO 
-add few bash script to add utilities such as curl or netstat on entrypoint or from docker file
+1. add few bash script to add utilities such as curl or netstat on entrypoint or from docker file.
+2. Pre-commit files
+3. GitLab and jenkins pipelines
+4. Python extend the code - add test cases 
+5. Try deploying on kubernetes
 
